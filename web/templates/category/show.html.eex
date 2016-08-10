@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-3">
+    <ul class="list-group">
+      <li class="list-group-item active">
+        Shoes
+      </li>
+
+      <li class="list-group-item">
+        <a href="#">
+          Men's shoes
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-md-9">
+    <div class="row">
+      <%= render Wholesail.ProductView, "products.html", conn: @conn, products: @products %>
+    </div>
+    <p>Page <%= @page_number %> of <%= @total_pages %>.</p>
+  </div>
+</div>

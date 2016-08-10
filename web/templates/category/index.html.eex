@@ -1,0 +1,5 @@
+<ul>
+<%= for category <- @categories do %>
+  <li><a href="<%= category_path @conn, :show, category.id %>"><%= category.name %></a></li>
+<% end %>
+</ul>

@@ -1,0 +1,49 @@
+<div itemscope itemtype="http://schema.org/Product">
+  <div class="row">
+    <div class="col-sm-6 col-sm-push-6">
+      <h1 itemprop="name">
+        <%= @product.name %>
+      </h1>
+
+      <p class="lead" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <span class="price">€&nbsp;<%= @product.price %></span>
+      </p>
+
+      <hr>
+
+      <div class="visible-xs">
+        <img src="<%= static_path @conn, "/images/product-image-placeholder.png" %>" alt="" class="img-responsive">
+
+        <hr>
+      </div>
+
+      <form role="form" class="product-form form-vertical" method="post" action=".">
+        <div class="form-group">
+          <button class="btn btn-lg btn-block btn-primary">
+            Add to cart
+          </button>
+        </div>
+      </form>
+
+      <hr>
+
+      <div itemprop="description">
+        <%= @product.description %>
+      </div>
+
+    </div>
+
+    <div class="col-sm-6 col-sm-pull-6">
+      <div id="product-carousel" class="carousel slide panel panel-default hidden-xs" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="<%= static_path @conn, "/images/product-image-placeholder.png" %>" alt="" class="img-responsive">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-gallery row">
+    </div>
+  </div>
+</div>
