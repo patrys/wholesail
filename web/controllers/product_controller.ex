@@ -6,9 +6,9 @@ defmodule Wholesail.ProductController do
 
   def show(conn, %{"id" => id}) do
     products = from p in Product,
-      preload: :category
+      join: category in assoc(p, :category)
 
-    product = Repo.get!(products, id)
+    product = Repo.get! products, id
 
     render conn, :show, product: product
   end

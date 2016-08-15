@@ -6,19 +6,19 @@ defmodule Wholesail.CategoryController do
   alias Wholesail.Repo
 
   def index(conn, params) do
-    categories = Repo.all(Category)
+    categories = Repo.all Category
 
     render conn, :index, categories: categories
   end
 
   def show(conn, %{"id" => id} = params) do
-    category = Repo.get!(Category, id)
+    category = Repo.get! Category, id
 
     products = from p in Product,
       where: p.category_id == ^id,
       order_by: :name
 
-    page = Repo.paginate(products, params)
+    page = Repo.paginate products, params
 
     render conn, :show,
       category: category,
