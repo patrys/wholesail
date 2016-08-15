@@ -13,8 +13,17 @@ defmodule Wholesail.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :storefront do
+    plug :fetch_cart
+  end
+
+  defp fetch_cart(conn, _) do
+    conn
+    |> assign(:cart_count, 0)
+  end
+
   scope "/", Wholesail do
-    pipe_through :browser # Use the default browser stack
+    pipe_through [:browser, :storefront]
 
     get "/", PageController, :index
     resources "/categories", CategoryController, only: [:index, :show]

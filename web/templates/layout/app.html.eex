@@ -31,7 +31,14 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a href="#"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">2</span></a>
+              <a href="#">
+                <i class="fa fa-shopping-cart"></i>
+                Cart
+                <% cart_count = @conn.assigns.cart_count %>
+                <%= if cart_count > 0 do %>
+                  <span class="badge"><%= cart_count %></span>
+                <% end %>
+              </a>
             </li>
             <li>
               <a href="#">Sign in</a>
@@ -41,14 +48,12 @@
       </nav>
     </header>
 
-    <% message = get_flash(@conn, :info) %>
-    <%= if message != nil do %>
+    <%= if message = get_flash(@conn, :info) do %>
     <div class="alert alert-info" role="alert">
       <%= message %>
     </div>
     <% end %>
-    <% message = get_flash(@conn, :error) %>
-    <%= if message != nil do %>
+    <%= if message = get_flash(@conn, :error) do %>
     <div class="alert alert-danger" role="alert">
       <%= message %>
     </div>
