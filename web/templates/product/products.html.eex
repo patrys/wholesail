@@ -3,7 +3,7 @@
   <div class="panel panel-default text-center">
     <div class="panel-body">
       <a itemprop="url" href="<%= product_path @conn, :show, product.id %>">
-        <img src="<%= static_path @conn, "/images/product-image-placeholder.png" %>" alt="" class="img-responsive">
+        <img src="<%= static_path @conn, "/assets/images/product-image-placeholder.png" %>" alt="" class="img-responsive">
         <span class="product-list-item-name" itemprop="name" title="<%= product.name %>"><%= product.name %></span>
       </a>
     </div>

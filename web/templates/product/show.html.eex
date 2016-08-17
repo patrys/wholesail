@@ -12,7 +12,7 @@
       <hr>
 
       <div class="visible-xs">
-        <img src="<%= static_path @conn, "/images/product-image-placeholder.png" %>" alt="" class="img-responsive">
+        <img src="<%= static_path @conn, "/assets/images/product-image-placeholder.png" %>" alt="" class="img-responsive">
 
         <hr>
       </div>
@@ -37,7 +37,7 @@
       <div id="product-carousel" class="carousel slide panel panel-default hidden-xs" data-ride="carousel">
         <div class="carousel-inner">
           <div class="item active">
-            <img src="<%= static_path @conn, "/images/product-image-placeholder.png" %>" alt="" class="img-responsive">
+            <img src="<%= static_path @conn, "/assets/images/product-image-placeholder.png" %>" alt="" class="img-responsive">
           </div>
         </div>
       </div>
