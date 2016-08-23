@@ -12,7 +12,7 @@ config :wholesail,
 # Configures the endpoint
 config :wholesail, Wholesail.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "lABpoMl2LJnRG+ugcuJqYJ+vj+NBB9tlL29C3as1x4WrPE75tNcehuAGepj8xHwE",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   render_errors: [view: Wholesail.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Wholesail.PubSub,
            adapter: Phoenix.PubSub.PG2]
@@ -21,6 +21,10 @@ config :wholesail, Wholesail.Endpoint,
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
+
+config :wholesail, Wholesail.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: System.get_env("DATABASE_URL")
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
