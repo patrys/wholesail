@@ -6,6 +6,7 @@ defmodule Wholesail.Product do
     field :description, :string
     field :price, :decimal, precision: 12, scale: 2
     belongs_to :category, Wholesail.Category
+    has_many :variants, Wholesail.ProductVariant
 
     timestamps()
   end
