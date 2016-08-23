@@ -7,7 +7,6 @@ web:
   build: .
   environment:
     - DATABASE_URL=postgres://postgres:postgres@db/postgres
-    - MIX_ENV
     - SECRET_KEY_BASE
   links:
     - db
