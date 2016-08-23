@@ -16,6 +16,7 @@ defmodule Wholesail.Product do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:name, :description, :price])
+    |> cast_assoc(:category)
     |> validate_required([:name, :description, :price])
   end
 end
