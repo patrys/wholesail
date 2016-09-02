@@ -18,14 +18,13 @@ defmodule Wholesail.CategoryController do
       where: p.category_id == ^id,
       order_by: :name
 
-    page = Repo.paginate products, params
+    page_number = Map.get params, "page", 1
+    page = Repo.paginate products,
+      page: page_number,
+      page_size: 12
 
     render conn, :show,
       category: category,
-      products: page.entries,
-      page_number: page.page_number,
-      page_size: page.page_size,
-      total_pages: page.total_pages,
-      total_entries: page.total_entries
+      page: page
   end
 end

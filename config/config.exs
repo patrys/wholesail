@@ -22,6 +22,9 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :scrivener_html,
+  routes_helper: Wholesail.Router.Helpers
+
 config :wholesail, Wholesail.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL")
