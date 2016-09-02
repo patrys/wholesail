@@ -31,7 +31,7 @@ defmodule Wholesail.Seeds do
   def create_random_product(category) do
     %Product{}
     |> Product.changeset(%{
-         name: Faker.Commerce.product_name_product,
+         name: Faker.Commerce.product_name,
          description: product_description,
          price: product_price
        })
