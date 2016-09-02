@@ -15,11 +15,16 @@ defmodule Wholesail.Router do
 
   pipeline :storefront do
     plug :fetch_cart
+    plug :fetch_root_categories
   end
 
   defp fetch_cart(conn, _) do
-    conn
-    |> assign(:cart_count, 0)
+    assign conn, :cart_count, 0
+  end
+
+  defp fetch_root_categories(conn, _) do
+    categories = Wholesail.Repo.all Wholesail.Category.root_categories
+    assign conn, :root_categories, categories
   end
 
   scope "/", Wholesail do

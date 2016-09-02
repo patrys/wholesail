@@ -15,4 +15,8 @@ defmodule Wholesail.Category do
     |> cast(params, [:name])
     |> validate_required([:name])
   end
+
+  def root_categories do
+    from c in Wholesail.Category
+  end
 end

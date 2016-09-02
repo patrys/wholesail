@@ -23,19 +23,20 @@
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
-            <li>
-              <a href="#">
-                Shoes
-              </a>
-            </li>
+            <%= for category <- @conn.assigns.root_categories do %>
+              <li>
+                <a href="<%= category_path @conn, :show, category %>">
+                  <%= category.name %>
+                </a>
+              </li>
+            <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
               <a href="#">
                 <i class="fa fa-shopping-cart"></i>
                 Cart
-                <% cart_count = @conn.assigns.cart_count %>
-                <%= if cart_count > 0 do %>
+                <%= if cart_count = @conn.assigns.cart_count > 0 do %>
                   <span class="badge"><%= cart_count %></span>
                 <% end %>
               </a>
