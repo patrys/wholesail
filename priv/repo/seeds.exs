@@ -13,6 +13,7 @@
 Faker.start
 
 defmodule Wholesail.Seeds do
+  alias Ecto.Changeset
   alias Wholesail.{Product, Repo}
 
   defp product_description do
@@ -25,26 +26,28 @@ defmodule Wholesail.Seeds do
 
   defp add_product_variants(changeset) do
     changeset
-    |> Ecto.Changeset.put_assoc(:variants, [%{sku: "1234567890123"}])
+    |> Changeset.put_assoc(:variants, [%{sku: "1234567890123"}])
   end
 
   def create_random_product(category) do
+    data = %{
+      name: Faker.Commerce.product_name,
+      description: product_description,
+      price: product_price
+    }
+
     %Product{}
-    |> Product.changeset(%{
-         name: Faker.Commerce.product_name,
-         description: product_description,
-         price: product_price
-       })
-    |> Ecto.Changeset.put_assoc(:category, category)
+    |> Product.changeset(data)
+    |> Changeset.put_assoc(:category, category)
     |> add_product_variants
     |> Repo.insert!
   end
 end
 
 
-shirts = %Wholesail.Category{}
-|> Wholesail.Category.changeset(%{name: "Shirts"})
+category = %Wholesail.Category{}
+|> Wholesail.Category.changeset(%{name: Faker.Company.buzzword})
 |> Wholesail.Repo.insert!
 
 1..40
-|> Enum.each(fn _ -> Wholesail.Seeds.create_random_product shirts end)
+|> Enum.each(fn _ -> Wholesail.Seeds.create_random_product category end)
