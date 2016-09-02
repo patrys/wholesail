@@ -38,7 +38,8 @@ defmodule Wholesail.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:scrivener_ecto, "~> 1.0"},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:faker, "~> 0.5"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
